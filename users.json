@@ -4,7 +4,7 @@
     "dob": "DD/MM/YYYY",
     "fav_artist": "",
     "fav_genre": "",
-    "playlists": {"playlists": {}}
+    "playlists": {"playlists": []}
   },
   "James": {
     "password": "Abc1234!",

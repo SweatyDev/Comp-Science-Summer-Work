@@ -21,13 +21,23 @@ def song_list(stdscr: curses.window):
     mixer = utils.mixer
 
     while True:
-        choices = ["PLAY", "PAUSE", "EXIT"]
+        isPaused = False
+
+        choices = [
+            "PLAY",
+            f"{'UNPAUSE' if isPaused else 'PAUSE'}",
+            "EXIT",
+        ]
         choice = utils.std_choice(stdscr, choices)
 
         if choice == "PLAY":
             mixer.music.play()
         elif choice == "PAUSE":
             mixer.music.pause()
+            isPaused = True
+        elif choice == "UNPAUSE":
+            mixer.music.unpause()
+            isPaused = False
         elif choice == "EXIT":
             mixer.music.stop()
             menu(stdscr)
