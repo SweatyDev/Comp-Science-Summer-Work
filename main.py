@@ -20,24 +20,35 @@ def song_list(stdscr: curses.window):
     utils.load_music_file(song, song_info["artist"])
     mixer = utils.mixer
 
-    while True:
-        isPaused = False
+    isPaused = False
+    isLooping = False
 
+    while True:
         choices = [
             "PLAY",
             f"{'UNPAUSE' if isPaused else 'PAUSE'}",
+            f"{'UNLOOP' if isLooping else 'LOOP'}",
             "EXIT",
         ]
         choice = utils.std_choice(stdscr, choices)
 
         if choice == "PLAY":
-            mixer.music.play()
+            mixer.music.play(loops=-1 if isLooping else 0)
+            isPaused = False
         elif choice == "PAUSE":
             mixer.music.pause()
             isPaused = True
         elif choice == "UNPAUSE":
             mixer.music.unpause()
             isPaused = False
+        elif choice == "LOOP":
+            isLooping = True
+            if not isPaused:
+                mixer.music.play(loops=-1)
+        elif choice == "UNLOOP":
+            isLooping = False
+            if not isPaused:
+                mixer.music.play(loops=0)
         elif choice == "EXIT":
             mixer.music.stop()
             menu(stdscr)
