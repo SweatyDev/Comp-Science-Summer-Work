@@ -1,0 +1,20 @@
+[
+  {
+    "name": "test",
+    "artist": "name",
+    "genre": "N/A",
+    "length": 10
+  },
+  {
+    "name": "Smile",
+    "artist": "The Supernaturals",
+    "genre": "Rock/Pop",
+    "length": 222
+  },
+  {
+    "name": "Merry Go Round of Life",
+    "artist": "Joe Hisaishi",
+    "genre": "Orchestral",
+    "length": 312
+  }
+]

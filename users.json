@@ -1,0 +1,16 @@
+{
+  "name": {
+    "password": "password",
+    "dob": "DD/MM/YYYY",
+    "fav_artist": "",
+    "fav_genre": "",
+    "playlists": {"playlists": {}}
+  },
+  "James": {
+    "password": "Abc1234!",
+    "dob": "03/10/2007",
+    "fav_artist": "Man with trashcan",
+    "fav_genre": "Something idk",
+    "playlists": {"playlist1": ["Smile", "Merry Go Round of Life"]}
+  }
+}
