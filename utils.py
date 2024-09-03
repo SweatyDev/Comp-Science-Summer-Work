@@ -87,7 +87,7 @@ def generate_playlist(genre=None, artist=None, length=99999) -> list:
             continue
 
         total_length += song["length"]
-        playlist.append(song)
+        playlist.append(song["name"])
 
     return playlist
 

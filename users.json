@@ -9,8 +9,10 @@
   "James": {
     "password": "Abc1234!",
     "dob": "03/10/2007",
-    "fav_artist": "Man with trashcan",
+    "fav_artist": "Man with Trashlid",
     "fav_genre": "Something idk",
-    "playlists": {"playlist1": ["Smile", "Merry Go Round of Life"]}
+    "playlists": {
+      "playlist0": ["Lid", "Smile", "Merry Go Round of Life"]
+    }
   }
 }

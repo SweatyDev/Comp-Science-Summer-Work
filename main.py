@@ -143,6 +143,33 @@ def play_playlist(stdscr, playlist):
             return
 
 
+def make_playlist(stdscr: curses.window):
+    utils.std_clear(stdscr)
+
+    genre = utils.std_input(stdscr, "Genre: ", 1, 15, 16) or None
+    artist = utils.std_input(stdscr, "Artist: ", 1, 20, 16) or None
+    length = utils.std_input(stdscr, "Playlist Length (Seconds)_: ", 1, 5, 16) or 99999
+
+    new_playlist = utils.generate_playlist(genre, artist, length)
+
+    utils.std_clear(stdscr)
+
+    for i, song in enumerate(new_playlist):
+        utils.print_centred_text(stdscr, 10 + i, song)
+
+    utils.print_centred_text(stdscr, 5, "Does this look good?")
+    choice = utils.std_choice(stdscr, ["YES", "NO"])
+
+    if choice == "YES":
+        noPlaylists = len(current_user["playlists"])
+        playlist_name = f"playlist{noPlaylists}"
+        current_user["playlists"][playlist_name] = new_playlist
+        utils.users_info[current_username] = current_user
+
+    playlist_menu(stdscr)
+    return
+
+
 def playlist_menu(stdscr: curses.window):
     """user_playlists = current_user["playlists"]
     user_playlists.append("CREATE NEW PLAYLIST")
@@ -181,8 +208,8 @@ def playlist_menu(stdscr: curses.window):
         menu(stdscr)
         return
     elif choice == "CREATE NEW PLAYLIST":
-        # TODO
-        pass
+        make_playlist(stdscr)
+        return
     # A playlist was selected.
     else:
         playlist = user_playlists[options.index(choice)][1]
